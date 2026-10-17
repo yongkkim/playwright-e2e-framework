@@ -4,10 +4,10 @@ import { CartPage } from "../pages/CartPage";
 import { CheckoutPage } from "../pages/CheckoutPage";
 
 test.describe("Checkout Happy Path", () => {
-  //   test.beforeEach(async ({ page }) => {
-  //     await page.route("**/*.{png,jpg,jpeg,gif}", (route) => route.abort());
-  //     await page.goto("https://demowebshop.tricentis.com/");
-  //   });
+  // Every test uses the same demo account, so start each one with an empty cart.
+  test.beforeEach(async ({ page }) => {
+    await new CartPage(page).clearCart();
+  });
 
   test("Should successfully complete checkout process", async ({ page }) => {
     const homePage = new HomePage(page);

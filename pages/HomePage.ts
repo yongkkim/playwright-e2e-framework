@@ -14,7 +14,7 @@ export class HomePage {
   }
 
   async navigate() {
-    await this.page.goto("https://demowebshop.tricentis.com/");
+    await this.page.goto("/");
   }
 
   async addBlueJeansToCart() {

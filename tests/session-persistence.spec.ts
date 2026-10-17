@@ -4,9 +4,10 @@ import { HomePage } from "../pages/HomePage";
 import { CartPage } from "../pages/CartPage";
 
 test.describe("Session Persistence", () => {
-  //   test.beforeEach(async ({ page }) => {
-  //     await page.route("**/*.{png,jpg,jpeg,gif}", (route) => route.abort());
-  //   });
+  // Every test uses the same demo account, so start each one with an empty cart.
+  test.beforeEach(async ({ page }) => {
+    await new CartPage(page).clearCart();
+  });
 
   test("Should retain cart items after logout and re-login", async ({
     page,
@@ -27,6 +28,7 @@ test.describe("Session Persistence", () => {
 
     await cartPage.goToCart();
     const cartBadge = page.locator(".cart-qty");
-    await expect(cartBadge).not.toHaveText("(0)");
+    // The cart was emptied before the test and one item was added.
+    await expect(cartBadge).toHaveText("(1)");
   });
 });

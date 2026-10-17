@@ -21,7 +21,7 @@ export class LoginPage {
 
   // 3. Define Actions (Methods)
   async navigateToLogin() {
-    await this.page.goto("https://demowebshop.tricentis.com/");
+    await this.page.goto("/");
     await this.loginLinkTopNav.click();
   }
 
