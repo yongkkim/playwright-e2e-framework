@@ -4,9 +4,10 @@ import { CartPage } from "../pages/CartPage";
 import { CheckoutPage } from "../pages/CheckoutPage";
 
 test.describe("Checkout Negative Scenarios", () => {
-  //   test.beforeEach(async ({ page }) => {
-  //     await page.route("**/*.{png,jpg,jpeg,gif}", (route) => route.abort());
-  //   });
+  // Every test uses the same demo account, so start each one with an empty cart.
+  test.beforeEach(async ({ page }) => {
+    await new CartPage(page).clearCart();
+  });
 
   test("Should display error when required checkout fields are missing", async ({
     page,

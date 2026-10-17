@@ -3,9 +3,10 @@ import { HomePage } from "../pages/HomePage";
 import { CartPage } from "../pages/CartPage";
 
 test.describe("Cart Modification and State Mutation", () => {
-  //   test.beforeEach(async ({ page }) => {
-  //     await page.route("**/*.{png,jpg,jpeg,gif}", (route) => route.abort());
-  //   });
+  // Every test uses the same demo account, so start each one with an empty cart.
+  test.beforeEach(async ({ page }) => {
+    await new CartPage(page).clearCart();
+  });
 
   test("Should correctly update total price when item quantity changes", async ({
     page,
